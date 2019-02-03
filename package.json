@@ -1,0 +1,45 @@
+{
+  "name": "famous-quotes-server",
+  "version": "0.0.1",
+  "description": "serves famous quotes",
+  "main": "main.js",
+  "scripts": {
+    "start": "forever --watch -m 5 -o ../famous-quotes.test.log --append -c \"ts-node\" src/index.ts --colors",
+    "start:production": "BUILD_TYPE=prod forever --watch -m 5 -o ../famous-quotes.prod.log --append -c \"ts-node\" src/index.ts --colors",
+    "parse": "node scripts/read-huge-file.js"
+  },
+  "author": "kk6zkl",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^2.2.2",
+    "@types/node": "^10.12.11",
+    "@types/pg": "^7.4.11",
+    "chalk": "^2.4.1",
+    "dotenv": "^6.1.0",
+    "event-stream": "^4.0.1",
+    "forever": "^0.15.3",
+    "koa": "^2.5.3",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "merge": ">=1.2.1",
+    "node-fetch": "^2.2.0",
+    "nodemon": "^1.18.4",
+    "pg": "^7.6.1",
+    "rate-limiter-flexible": "^0.19.4",
+    "ts-node": "^7.0.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^4.0.3",
+    "@types/express": "^4.16.0",
+    "@types/koa": "^2.0.46",
+    "@types/koa-bodyparser": "^5.0.1",
+    "@types/koa-router": "^7.0.32",
+    "@types/koa__cors": "^2.2.3",
+    "@types/node-fetch": "^2.1.2",
+    "@types/uuid": "3.4.4",
+    "jest": "latest",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.1"
+  }
+}
