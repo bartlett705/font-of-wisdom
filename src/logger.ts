@@ -9,7 +9,6 @@ interface LogData {
   errorMessage: string
   errorStack: string
   host: string
-  zip: string
   method: string
   remoteAddress: string
   responseTime: number
@@ -60,9 +59,7 @@ export const requestLoggerMiddleware = (
     method: ctx.method,
     remoteAddress: ctx.request.ip,
     url: ctx.url,
-    userAgent: ctx.headers['user-agent'],
-    zip:
-      ctx.method === 'POST' && ctx.request.body && (ctx.request.body as any).zip
+    userAgent: ctx.headers['user-agent']
   }
 
   let errorThrown: any = null
@@ -93,7 +90,7 @@ function outputLog(logger: Logger, data: Partial<LogData>, thrownError: any) {
   if (config.prettyPrint) {
     let annotation = ''
     if (data.url === '/' && data.method === 'POST') {
-      annotation = `| zip: ${data.zip} | ${data.rowsReturned} rows returned`
+      annotation = `| ${data.rowsReturned} rows returned`
     }
     logger.info(
       `${data.statusCode} ${data.method} ${

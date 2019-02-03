@@ -72,9 +72,9 @@ router.get('/', async (ctx: Koa.Context) => {
       count: returnedCount,
       quotes
     })
-    // discord.postMessage({
-    //   content: `Serviced a search for: ${count} quotes.`
-    // })
+     discord.postMessage({
+       content: `Serviced a search for: ${count} quotes.`
+     })
   } else {
     response.status = 500
     response.body = 'Something went wrong :/'
