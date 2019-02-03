@@ -1,5 +1,5 @@
 {
-  "name": "famous-quotes-server",
+  "name": "font-of-wisdom",
   "version": "0.0.1",
   "description": "serves famous quotes",
   "main": "main.js",
@@ -8,8 +8,8 @@
     "start:production": "BUILD_TYPE=prod forever --watch -m 5 -o ../famous-quotes.prod.log --append -c \"ts-node\" src/index.ts --colors",
     "parse": "node scripts/read-huge-file.js"
   },
-  "author": "kk6zkl",
-  "license": "ISC",
+  "author": "Ahmad Kanawi",
+  "license": "MIT",
   "dependencies": {
     "@koa/cors": "^2.2.2",
     "@types/node": "^10.12.11",
@@ -40,6 +40,6 @@
     "@types/uuid": "3.4.4",
     "jest": "latest",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.1"
+    "typescript": "^3.2.2"
   }
 }
