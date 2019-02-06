@@ -26,6 +26,7 @@ dbClient.query('SELECT count(author) FROM quotes').then((res) => {
 })
 
 const app = new Koa()
+app.proxy = true
 
 const rateLimiterOpts = {
   duration: 30, // Time to reset
@@ -43,9 +44,12 @@ app.use(
 
 app.use(async (ctx, next) => {
   try {
-    const res = await rateLimiter.consume(ctx.ip, ctx.query.count || 1)
+    const canonicalIP = ctx.request.ips.length
+      ? JSON.stringify(ctx.request.ips)
+      : ctx.request.ip
+    const res = await rateLimiter.consume(canonicalIP, ctx.query.count || 1)
     logger.debug(
-      `${ctx.ip} consumed ${ctx.query.count || 1} point(s), ${
+      `${canonicalIP} consumed ${ctx.query.count || 1} point(s), ${
         res.remainingPoints
       } remaining, ${res.msBeforeNext}ms to reset.`
     )
