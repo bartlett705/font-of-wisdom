@@ -10,7 +10,7 @@ interface LogData {
   errorStack: string
   host: string
   method: string
-  remoteAddress: string
+  remoteAddress: string | string[]
   responseTime: number
   rowsReturned: number
   statusCode: number
@@ -57,9 +57,7 @@ export const requestLoggerMiddleware = (
   const start = Date.now()
   const logData: Partial<LogData> = {
     method: ctx.method,
-    remoteAddress: ctx.request.ips.length
-      ? JSON.stringify(ctx.request.ips)
-      : ctx.request.ip,
+    remoteAddress: ctx.request.ips.length ? ctx.request.ips : ctx.request.ip,
     url: ctx.url,
     userAgent: ctx.headers['user-agent']
   }
