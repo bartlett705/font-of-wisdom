@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <title>Famous Quotes API</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" type="image/ico" href="/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: #232323;
+        color: #fafafa;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Roboto', 'Tahoma', sans-serif;
+      }
+
+      section {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        background: #323232;
+        /* border: 1px dashed darkblue; */
+        padding: 1rem;
+        border-radius: 0.25rem;
+      }
+
+      code {
+        background: #545454;
+        padding: 0.5rem;
+        border-radius: 0.2rem;
+      }
+
+      p {
+        padding-top: 1rem;
+      }
+
+      footer {
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      Famous Quotes API
+    </h1>
+    <main>
+      <span>
+        These are the 'docs' for a very simple API for famous quotes, useful for
+        web development projects.
+      </span>
+      <section>
+        <h2>
+          How to Query
+        </h2>
+
+        <p>This API is hosted, and can be accessed via HTTP request at:</p>
+        <code>GET http://quotes.mosey.systems/api</code>
+
+        <p>
+          You can optional provide a count (up to 25) via a search parameter,
+          like so:
+        </p>
+
+        <code>
+          GET http://quotes.mosey.systems/api?count=5
+        </code>
+
+        <p>
+          Note that your API rate-limiting is counted on a per-quotes-fetched
+          basis.
+        </p>
+      </section>
+    </main>
+    <footer>
+      For issues/questions - head to
+      <a href="https://github.com/bartlett705/font-of-wisdom/issues"
+        >the Github page</a
+      >.
+    </footer>
+  </body>
+</html>

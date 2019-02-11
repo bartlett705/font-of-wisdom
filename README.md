@@ -4,7 +4,7 @@ Simple API to power beginner web development projects.
 
 ## How to Query
 
-This API is hosted, and can be accessed via HTTP request:
+This API is hosted, and can be accessed via HTTP request at:
 `GET http://quotes.mosey.systems/api`
 
 You can optional provide a count (up to 25) via a search parameter, like so:
