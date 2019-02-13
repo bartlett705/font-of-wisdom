@@ -73,9 +73,9 @@ router.get('/', async (ctx: Koa.Context) => {
       quotes
     })
     discord.postMessage({
+      avatar_url: 'https://mosey.systems/aristotle.jpg',
       content: `Serviced a search for: ${count} quotes.`,
-      username: 'Aristotle',
-      avatar_url: 'https://mosey.systems/aristotle.jpg'
+      username: 'Aristotle'
     })
   } else {
     response.status = 500
@@ -103,17 +103,6 @@ async function queryDB(
       res(null)
     }
   })
-}
-
-function rollForIDs(desiredCount: number, totalCount: number) {
-  const chosenIDs = new Set()
-  while (chosenIDs.size < desiredCount) {
-    const rando = Math.round(Math.random() * totalCount)
-    if (!chosenIDs.has(rando)) {
-      chosenIDs.add(rando)
-    }
-  }
-  return Array.from(chosenIDs)
 }
 
 export const routes = router.routes()

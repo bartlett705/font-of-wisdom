@@ -10,10 +10,12 @@ interface LogData {
   errorStack: string
   host: string
   method: string
+  search: string
   remoteAddress: string | string[]
   responseTime: number
   rowsReturned: number
   statusCode: number
+  time: string
   url: string
   userAgent: string
 }
@@ -33,18 +35,18 @@ export class Logger {
   public debug: (...args: any) => void
   public externalCall: (...args: any) => void
 
-  private logLevel: number
   constructor(logLevel: number) {
-    this.logLevel = logLevel
-    this.error = (...args: any) => console.log(error(...args))
+    this.error = (...args: any) => console.error(error(...args))
     this.warn =
-      logLevel > 0 ? (...args: any) => console.log(warn(...args)) : noOp
+      logLevel > 0 ? (...args: any) => console.warn(warn(...args)) : noOp
     this.info =
-      logLevel > 1 ? (...args: any) => console.log(info(...args)) : noOp
+      logLevel > 1 ? (...args: any) => console.info(info(...args)) : noOp
     this.debug =
-      logLevel > 2 ? (...args: any) => console.log(debug(...args)) : noOp
+      logLevel > 2 ? (...args: any) => console.debug(debug(...args)) : noOp
     this.externalCall =
-      logLevel > 2 ? (...args: any) => console.log(externalCall(...args)) : noOp
+      logLevel > 2
+        ? (...args: any) => console.debug(externalCall(...args))
+        : noOp
   }
 }
 
@@ -57,7 +59,9 @@ export const requestLoggerMiddleware = (
   const start = Date.now()
   const logData: Partial<LogData> = {
     method: ctx.method,
+    search: ctx.queryString,
     remoteAddress: ctx.request.ips.length ? ctx.request.ips : ctx.request.ip,
+    time: new Date().toISOString(),
     url: ctx.url,
     userAgent: ctx.headers['user-agent']
   }
